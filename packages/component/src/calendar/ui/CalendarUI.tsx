@@ -6,16 +6,24 @@ import type { CalendarDay } from "../hooks/useCalendar";
 type Props = {
   currentDate: Date;
   days: CalendarDay[];
+  selectedDate: Date | null;
   onPrev: () => void;
   onNext: () => void;
+  onDateSelect: (date: Date) => void;
 };
 
 export const CalendarUI: React.FC<Props> = ({
   currentDate,
   days,
+  selectedDate,
   onPrev,
   onNext,
+  onDateSelect,
 }) => {
+  const isSelected = (date: Date): boolean => {
+    return selectedDate?.toDateString() === date.toDateString();
+  };
+
   return (
     <div className="calendar">
       <div className="calendar-header">
@@ -43,7 +51,9 @@ export const CalendarUI: React.FC<Props> = ({
             key={index}
             className={`calendar-day 
               ${!day.isCurrentMonth ? "not-current-month" : ""} 
-              ${day.isToday ? "today" : ""}`}
+              ${day.isToday ? "today" : ""} 
+              ${isSelected(day.date) ? "selected" : ""}`}
+            onClick={() => onDateSelect(day.date)}
           >
             {day.date.getDate()}
           </div>

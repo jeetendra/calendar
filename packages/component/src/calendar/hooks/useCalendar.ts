@@ -9,6 +9,7 @@ export interface CalendarDay {
 
 export const useCalendar = (initialDate: Date = new Date()) => {
   const [currentDate, setCurrentDate] = useState(initialDate);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   const getCalendarDays = (): CalendarDay[] => {
     const startOfMonth = new Date(
@@ -91,5 +92,7 @@ export const useCalendar = (initialDate: Date = new Date()) => {
     days: getCalendarDays(),
     goToNextMonth,
     goToPrevMonth,
+    selectedDate,
+    setSelectedDate,
   };
 };
