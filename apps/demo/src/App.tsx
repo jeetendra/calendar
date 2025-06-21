@@ -1,9 +1,9 @@
-import { Button } from "@js/component";
+import { Calendar } from "@js/component";
 
 function App() {
   return (
     <>
-      <Button></Button>
+      <Calendar></Calendar>
     </>
   );
 }
