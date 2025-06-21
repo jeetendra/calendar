@@ -1,2 +1,5 @@
-# calendar
-React Calendar Component
+# React Calendar Component
+
+```shell
+npm run demo
+```
